@@ -1,0 +1,11 @@
+C:\папка\С# project\tree\tree\bin\Debug\netcoreapp2.1\tree.deps.json
+C:\папка\С# project\tree\tree\bin\Debug\netcoreapp2.1\tree.runtimeconfig.json
+C:\папка\С# project\tree\tree\bin\Debug\netcoreapp2.1\tree.runtimeconfig.dev.json
+C:\папка\С# project\tree\tree\bin\Debug\netcoreapp2.1\tree.dll
+C:\папка\С# project\tree\tree\bin\Debug\netcoreapp2.1\tree.pdb
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.csprojAssemblyReference.cache
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.csproj.CoreCompileInputs.cache
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.AssemblyInfoInputs.cache
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.AssemblyInfo.cs
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.dll
+C:\папка\С# project\tree\tree\obj\Debug\netcoreapp2.1\tree.pdb
