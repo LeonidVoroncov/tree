@@ -1,122 +1,122 @@
 ﻿using System;
 
-public class ElementCollection
+public class BinarySearchTree
 {
-    private Element _first;
-    public int Count { get; private set; }
-
-    public ElementCollection()
-    {
-        _first = new Element
-        {
-            Value = 0,
-            Counter = 1,
-            Left = null,
-            Right = null          
-        };
-        Count = 0;
-    }
+    private Element _firstElement;
 
     public void AddElement(int value)
     {
-        if (Count == 0)
+        if (_firstElement == null)
         {
-            _first.Value = value;
-            Count++;
+            var newElement = new Element
+            {
+                Value = value,
+                Counter = 1,
+                Right = null,
+                Left = null
+            };
+            _firstElement = newElement;
         }
         else
         {
-            var current = _first;
-            var score = true;
-
-            while (score)
-            {
-                if (value > current.Value)
-                {
-                    if (current.Right == null)
-                    {
-                        var newElement = new Element
-                        {
-                            Value = value,
-                            Counter = 1,
-                            Right = null,
-                            Left = null
-                        };
-                        current.Right = newElement;
-                        score = false;
-                    }
-                    else
-                    {
-                        current = current.Right;
-                    }
-
-                }
-                if (value < current.Value)
-                {
-                    if (current.Left == null)
-                    {
-                        var newElement = new Element
-                        {
-                            Value = value,
-                            Counter = 1,
-                            Right = null,
-                            Left = null
-                        };
-                        current.Left = newElement;
-                        score = false;
-                    }
-                    else
-                    {
-                        current = current.Left;
-                    }
-                }
-                if (value == current.Value)
-                {
-                    current.Counter++;
-                    score = false;
-                }
-            }
-        }        
+            var current = _firstElement;
+            AddElement( value, current);
+        }
     }
 
-    public void Get(out int Counter, int value, out bool checkElement)
+    public void AddElement(int value, Element current)
     {
-        var current = _first;
-        var score = true;
-        Counter = 1;
-        checkElement = false;
-
-        while (score)
+        if (value > current.Value)
         {
-            if (value > current.Value)
+            if (current.Right == null)
             {
-                if (current.Right == null)
+                var newElement = new Element
                 {
-                    score = false;
-                }
-                else
-                {
-                    current = current.Right;
-                }
+                    Value = value,
+                    Counter = 1,
+                    Right = null,
+                    Left = null
+                };
+                current.Right = newElement;
+                return;
+            }
+            else
+            {
+                current = current.Right;
+                AddElement(value, current);
+            }
 
-            }
-            if (value < current.Value)
+        }
+        else if (value < current.Value)
+        {
+            if (current.Left == null)
             {
-                if (current.Left == null)
+                var newElement = new Element
                 {
-                    score = false;
-                }
-                else
-                {
-                    current = current.Left;
-                }
+                    Value = value,
+                    Counter = 1,
+                    Right = null,
+                    Left = null
+                };
+                current.Left = newElement;
+                return;
             }
-            if (value == current.Value)
+            else
             {
-                Counter = current.Counter;
-                checkElement = true;
-                score = false;
+                current = current.Left;
+                AddElement(value, current);
             }
+        }
+        else
+        {
+            current.Counter++;
+            return;
+        }
+    }
+
+
+
+    public bool Check(int value, out int counter)
+    {
+        counter = 0;
+        var current = _firstElement;
+
+        return Check(value, out counter, current);
+    }
+
+    public bool Check(int value, out int counter, Element current)
+    {
+        counter = 0;
+
+        if (value > current.Value)
+        {
+            if (current.Right == null)
+            {               
+                return false;
+            }
+            else
+            {
+                current = current.Right;
+                return Check(value, out counter, current);
+            }
+
+        }
+        else if (value < current.Value)
+        {
+            if (current.Left == null)
+            {
+                return false;
+            }
+            else
+            {
+                current = current.Left;
+                return Check(value, out counter, current);
+            }
+        }
+        else
+        {
+            counter = current.Counter;
+            return true;
         }
     }
 }

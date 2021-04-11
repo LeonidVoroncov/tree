@@ -6,23 +6,23 @@ namespace tree
     {
         static void Main(string[] args)
         {
-            var elementCollection = new ElementCollection();
+            var elementCollection = new BinarySearchTree();
 
-            int[] array = new int[] { 25, 20, 30, 15, 45, 70, 80, 10, 65, 75, 35, 45, 20, 45 };
+            var array = new int[] { 25, 20, 30, 15, 45, 70, 80, 10, 65, 75, 35, 45, 20, 45 };
 
             foreach (var element in array)
             {
                 elementCollection.AddElement(element);
             }
 
-            int counte;
-            var checkedElements = false;
+            int counter;
+            bool numberAvailability;
 
             foreach (var element in array)
-            {
-                elementCollection.Get(out counte, element,out checkedElements);
+            {             
+                numberAvailability = elementCollection.Check(element, out counter);
 
-                Console.WriteLine($"Число: {element}| Наличие числа: {checkedElements}| Кол-во вхождений:{counte}");
+                Console.WriteLine($"Число: {element}| Наличие числа: {numberAvailability}| Кол-во вхождений:{counter}");
             }
 
             Console.ReadKey();
